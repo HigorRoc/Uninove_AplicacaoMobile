@@ -48,9 +48,9 @@ Este repositório será utilizado para compor todos códigos + links da discplin
 - Selecione "Create Virtual Device";
 - Selecione "Phone" na aba Category;
 - Desça a lista e escolha a opção "Pixel 2" e Next:
-  - <img src="https://github.com/HigorRoc/Uninove_2021.1_AplicacaoMobile/blob/main/Arquivos%20img/Print_Emulador.png">
+  - <img src="https://github.com/HigorRoc/Uninove_2021.1_AplicacaoMobile/blob/master/Arquivos%20img/Print_Emulador.png">
 - Selecione a opção "R API 30" e Next:
-  - <img src="https://github.com/HigorRoc/Uninove_2021.1_AplicacaoMobile/blob/main/Arquivos%20img/Print_Android.png">
+  - <img src="https://github.com/HigorRoc/Uninove_2021.1_AplicacaoMobile/blob/master/Arquivos%20img/Print_Android.png">
 - Dê um nome, por exemlo "Pixel 2 API 30 - Flutter";
 - Finish e está criado o emulador. 
 
@@ -60,7 +60,7 @@ Este repositório será utilizado para compor todos códigos + links da discplin
 - Abra o VSCode;
 - No canto inferior direito selecione " Chrome (Web-javascript)" ou "no device";
 - Ao abrir, irá aparecer a seguinte lista:
-  - <img src="https://github.com/HigorRoc/Uninove_2021.1_AplicacaoMobile/blob/main/Arquivos%20img/Print_Lista.png">
+  - <img src="https://github.com/HigorRoc/Uninove_2021.1_AplicacaoMobile/blob/master/Arquivos%20img/Print_Lista.png">
 - Ao aparecer o seu emulador "Pixel 2 API 30 - Flutter" selecione e espere carregar (demora um pouco).
 
 .
