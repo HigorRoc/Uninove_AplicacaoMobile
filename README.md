@@ -40,34 +40,6 @@ Este repositório será utilizado para compor todos códigos + links da discplin
 - Após selecionar a pasta, volte ao VS CODE e dê um nome ao arquivo;
 - Pronto, iniciamos o projeto no VS CODE.
 
-.
-
-### :heavy_check_mark: Criando um Emulador com o Android Studio
-- Abra o Android Studio;
-- Vá em AVD Manager (caso não apareça no canto superior, ir em configurações;
-- Selecione "Create Virtual Device";
-- Selecione "Phone" na aba Category;
-- Desça a lista e escolha a opção "Pixel 2" e Next:
-  - <img src="https://github.com/HigorRoc/Uninove_2021.1_AplicacaoMobile/blob/master/Arquivos%20img/Print_Emulador.png">
-- Selecione a opção "R API 30" e Next:
-  - <img src="https://github.com/HigorRoc/Uninove_2021.1_AplicacaoMobile/blob/master/Arquivos%20img/Print_Android.png">
-- Dê um nome, por exemlo "Pixel 2 API 30 - Flutter";
-- Finish e está criado o emulador. 
-
-.
-
-### :heavy_check_mark: Abrindo a Lista de emuladores no VSCode
-- Abra o VSCode;
-- No canto inferior direito selecione " Chrome (Web-javascript)" ou "no device";
-- Ao abrir, irá aparecer a seguinte lista:
-  - <img src="https://github.com/HigorRoc/Uninove_2021.1_AplicacaoMobile/blob/master/Arquivos%20img/Print_Lista.png">
-- Ao aparecer o seu emulador "Pixel 2 API 30 - Flutter" selecione e espere carregar (demora um pouco).
-
-.
-
-### :warning: Aviso sobre Emuladores
-- Na aula do Prof. Edson, não será necessário criar emulador, pois cada um pode chegar até 10GB ou mais, o recomendado é selecionar a opção "Chrome Web" que já será suficiente para as aulas!! 
-
 ---
 
 Quaisquer dúvidas, entrar em contato através do e-mail institucional: 
