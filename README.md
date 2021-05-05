@@ -21,14 +21,8 @@ Este repositório será utilizado para compor todos códigos + links da discplin
 > Link Android Studio + Flutter: [Clique aqui](https://medium.com/flutter-comunidade-br/instalando-e-configurando-flutter-no-windows-cae74711df1e#:~:text=Instala%C3%A7%C3%A3o%20do%20Android%20SDK&text=Nesta%20tela%20na%20parte%20de,Packages%20perto%20do%20bot%C3%A3o%20OK)
 
 > Link do Forum "Erro no Flutter Doctor, ele não reconhece o Flutter/Dart do Android Studio": [Clique aqui](https://qastack.com.br/programming/51860845/flutter-plugin-not-installed-error-when-running-flutter-doctor)
-- Mandar os 3 comandos abaixo no CMD:
-  - flutter channel dev
-  - flutter upgrade
-  - flutter config --android-studio-dir="C:\Program Files\Android\Android Studio"
 
 > Link do Forum "Erro no Grandle, mudar do 6.1.1 para 6.5": [Clique aqui](https://developer.android.com/studio/releases/gradle-plugin?hl=pt#:~:text=Atualizar%20o%20Gradle,-Ao%20atualizar%20o&text=Para%20ter%20o%20melhor%20desempenho,Gradle%20e%20do%20plug%2Din.&text=Voc%C3%AA%20pode%20especificar%20a%20vers%C3%A3o%20do%20Gradle%20acessando%20o%20menu,%2Fwrapper%2Fgradle%2Dwrapper.)
-- Realizar os seguintes procedimentos:
-  - file > project structure > project > mudar o grandle version 6.1 para 6.5
 
 ---
 
