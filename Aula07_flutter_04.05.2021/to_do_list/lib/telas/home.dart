@@ -66,6 +66,18 @@ class _HomeState extends State<Home> {
     return arquivo.writeAsString(dados);
   }
 
+  //Método para adicionar as tarefas
+  void _adicionaTarefa(){
+    setState(() {
+      Map<String, dynamic> novaTarefa = Map();
+      novaTarefa['titulo'] = _toDoController.text;
+      novaTarefa['realizado'] = false; //(-1)
+      _toDoController.text = '';
+      _toDoList.add(novaTarefa);
+      _salvarDados();
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold();
