@@ -7,7 +7,7 @@ void main() {
     MaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'To Do List',
-      //home: Home(),
+      home: Home(),
       themeMode: ThemeMode.system, //Tema atual do Smartphone
       theme: ligthTheme(),
       darkTheme: darkTheme(),

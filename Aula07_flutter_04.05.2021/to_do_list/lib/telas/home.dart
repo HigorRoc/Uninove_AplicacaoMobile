@@ -1,8 +1,8 @@
-import 'package:flutter/material.dart'; //Android
-import 'package:flutter/cupertino.dart'; //Apple
-import 'package:path_provider/path_provider.dart'; //Armazenaento local
-import 'dart:convert'; //Manipular json
-import 'dart:io'; //Manipular arquivos
+import 'dart:convert'; // manipular json
+import 'dart:io'; // manipular arquivos
+import 'package:flutter/cupertino.dart'; // icons Apple
+import 'package:flutter/material.dart';
+import 'package:path_provider/path_provider.dart'; // armazenamento local
 
 class Home extends StatefulWidget {
   @override
@@ -78,8 +78,137 @@ class _HomeState extends State<Home> {
     });
   }
 
+  Widget widgetTarefa(BuildContext context, int index) {
+    return Dismissible(
+      key: Key(DateTime.now().microsecondsSinceEpoch.toString()),
+      background: Container(
+        color: Colors.red, //Cor do Fundo quando apagar a mensagem
+        child: Align(
+          alignment: Alignment(0.85, 0.0),
+          child: Icon(
+            Icons.delete_sweep_outlined,
+            color: Colors.white,
+          ),
+        ), 
+      ),
+      //Definindo a direção do objeto para apagar
+      direction: DismissDirection.endToStart,
+      child: CheckboxListTile(
+        title: Text(_toDoList[index]["titulo"]),
+        value: _toDoList[index]["realizado"],
+        secondary: CircleAvatar(
+          child: Icon(
+            _toDoList[index]["realizado"] ? Icons.check : Icons.error,
+            color: Theme.of(context).iconTheme.color,
+            ),
+          backgroundColor: Theme.of(context).primaryColor,
+        ),
+        onChanged: (value){
+          setState(() {
+            _toDoList[index]["realizado"] = value;
+            _salvarDados();
+          });
+        },
+        checkColor: Theme.of(context).primaryColor,
+        activeColor: Theme.of(context).secondaryHeaderColor,
+      ), //Até aqui controlarmos o Estado da lista
+
+      //Fazendo uma exclusão dentro de um determinado tempo
+      onDismissed: (direction){
+        setState(() {
+          _lastRemoved = Map.from(_toDoList[index]); //Guarda o valor do item da lista
+          _indexlastRemoved = index; //Guarda o indice da entrada
+          _toDoList.removeAt(index);
+          _salvarDados();
+        });
+
+        //Ação de desfazer
+        final snack = SnackBar(
+          content: Text("Tarefa \"${_lastRemoved["titulo"]}\" apagada"),
+          action: SnackBarAction(
+            label: "Desfazer",
+            onPressed: (){
+              setState(() {
+                _toDoList.insert(_indexlastRemoved, _lastRemoved);
+                _salvarDados();
+              });
+            }),
+            duration: Duration(seconds: 5),
+        );
+        //Configurar: mostrar/esconder o desfazer
+        ScaffoldMessenger.of(context).hideCurrentSnackBar();
+        ScaffoldMessenger.of(context).showSnackBar(snack);
+      },
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
-    return Scaffold();
+    return Scaffold(
+      appBar: AppBar(
+        title: Text("Lista de Tarefas"),
+        centerTitle: true,
+      ),
+      body: Builder(
+        builder: (context) => Column(
+          children: [
+            Container(
+              padding: EdgeInsets.fromLTRB(17.0, 1.0, 7.0, 1.0),
+              child: Row(
+                children: [
+                  Expanded(
+                      child: TextField(
+                    controller: _toDoController,
+                    maxLength: 50,
+                    decoration: InputDecoration(labelText: "Nova tarefa"),
+                  )),
+                  Container(
+                    height: 45.0,
+                    width: 45.0,
+                    child: FloatingActionButton(
+                      child: Icon(Icons.save),
+                      onPressed: () {
+                        if (_toDoController.text.isEmpty) {
+                          final alerta = SnackBar(
+                            content: Text('Não pode ser vazia!'),
+                            duration: Duration(seconds: 4),
+                            action: SnackBarAction(
+                              label: 'Ok',
+                              onPressed: () {
+                                //Scaffold.of(context).removeCurrentSnackBar();
+                                ScaffoldMessenger.of(context)
+                                    .removeCurrentSnackBar();
+                              },
+                            ),
+                          );
+
+                          //Scaffold.of(context).removeCurrentSnackBar();
+                          ScaffoldMessenger.of(context).removeCurrentSnackBar();
+                          //Scaffold.of(context).showSnackBar(alerta);
+                          ScaffoldMessenger.of(context).showSnackBar(alerta);
+                        } else {
+                          _adicionaTarefa();
+                        }
+                      },
+                    ),
+                  )
+                ],
+              ),
+            ),
+            Padding(padding: (EdgeInsets.only(top: 10.0))),
+            Expanded(
+              child: RefreshIndicator(
+                onRefresh: _recarregaLista,
+                child: ListView.builder(
+                  itemBuilder: widgetTarefa,
+                  itemCount: _toDoList.length,
+                  padding: EdgeInsets.only(top: 10.0),
+                ),
+              ),
+            )
+          ],
+        ),
+      ),
+    );
   }
 }
