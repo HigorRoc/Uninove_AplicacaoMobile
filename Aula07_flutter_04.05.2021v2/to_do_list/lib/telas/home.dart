@@ -3,18 +3,18 @@ import 'dart:io'; // manipular arquivos
 import 'package:flutter/cupertino.dart'; // icons Apple
 import 'package:flutter/material.dart';
 import 'package:path_provider/path_provider.dart'; // armazenamento local
-
+ 
 class Home extends StatefulWidget {
   @override
   _HomeState createState() => _HomeState();
 }
-
+ 
 class _HomeState extends State<Home> {
   List _toDoList = []; // lista de tarefas
   final _toDoController = TextEditingController();
-  late int _indexLastRemoved; // guarda o índice do último registro removido
-  late Map<String, dynamic> _lastRemoved; // guarda o último registro removido
-
+  int _indexLastRemoved; // guarda o índice do último registro removido
+  Map<String, dynamic> _lastRemoved; // guarda o último registro removido
+ 
   // ### vamos implementar a lógica ###
   // carrega os dados do arquivo ao mudar o estado da classe
   @override
@@ -22,30 +22,30 @@ class _HomeState extends State<Home> {
     super.initState();
     _lerDados().then((value) {
       setState(() {
-        _toDoList = json.decode(value!);
+        _toDoList = json.decode(value);
       });
     });
   }
-
+ 
   // "async" - determina que um método será assíncrono,
   // não retornar imediatamente um valor.
   // "await" - determina que o aplicativo aguarde um retorno (resposta)
   // "Future" - determina que uma função vai retornar algo no futuro
-  Future<String?> _lerDados() async {
+  Future<String> _lerDados() async {
     try {
       final arquivo = await _abreArquivo();
       return arquivo.readAsString();
     } catch (e) {
-      return null; //ERROR
+      return null;
     }
   }
-
+ 
   Future<File> _abreArquivo() async {
     // Se não existir o arquivo, será criado
     final diretorio = await getApplicationDocumentsDirectory();
     return File("${diretorio.path}/dados.json");
   }
-
+ 
   Future<Null> _recarregaLista() async {
     await Future.delayed(Duration(seconds: 1));
     setState(() {
@@ -58,13 +58,13 @@ class _HomeState extends State<Home> {
     });
     return null;
   }
-
+ 
   Future<File> _salvarDados() async {
     String dados = json.encode(_toDoList);
     final arquivo = await _abreArquivo();
     return arquivo.writeAsString(dados);
   }
-
+ 
   // método para adicionar as tarefas
   void _adicionaTarefa() {
     setState(() {
@@ -76,7 +76,7 @@ class _HomeState extends State<Home> {
       _salvarDados();
     });
   }
-
+ 
   Widget widgetTarefa(BuildContext context, int index) {
     return Dismissible(
       key: Key(DateTime.now().microsecondsSinceEpoch.toString()),
@@ -140,7 +140,7 @@ class _HomeState extends State<Home> {
       },
     );
   }
-
+ 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -180,7 +180,7 @@ class _HomeState extends State<Home> {
                               },
                             ),
                           );
-
+ 
                           //Scaffold.of(context).removeCurrentSnackBar();
                           ScaffoldMessenger.of(context).removeCurrentSnackBar();
                           //Scaffold.of(context).showSnackBar(alerta);
@@ -211,3 +211,4 @@ class _HomeState extends State<Home> {
     );
   }
 }
+ 
