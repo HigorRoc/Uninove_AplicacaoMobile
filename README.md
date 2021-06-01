@@ -9,7 +9,7 @@ Este repositório será utilizado para compor todos códigos + links da discplin
 ---
 
 ### :pushpin: Atividades
-> Status das Atividades: Em desenvolvimento :warning:
+> Status da Prova: Entregue ✔️
 
 ---
 
