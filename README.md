@@ -1,7 +1,7 @@
 <img src="https://github.com/HigorRoc/Uninove_2021.1/blob/main/Uninove-Logo.png" width="120" height="60">
 
 # Aplicações Mobile :computer:
-###  Prof. Edson Souza
+###  Prof. Edson Souza - 2021/1
 
 Este repositório será utilizado para compor todos códigos + links da discplina acima e manter tudo organizado.
 - Caminho (Higor): C:\src_flutter\flutter_ter_noite
